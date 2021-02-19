@@ -1,0 +1,113 @@
+﻿<UserControl x:Class="MvvmDemo.Views.DemoView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MvvmDemo.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Margin="15">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock 
+            Text="Demo Obj" 
+            Grid.Row="0" 
+            Grid.Column="0" 
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Center"
+            Margin="5,8"
+            />
+        <TextBlock
+            Text="Enter Id"
+            Grid.Column="0"
+            Grid.Row="1"
+            Margin="5,8" Padding="3"/>
+        <TextBlock
+            Text="Enter Name"
+            Grid.Column="0"
+            Grid.Row="2"
+            Margin="5,8" Padding="3"/>
+        <TextBlock
+            Text="Enter Age"
+            Grid.Column="0"
+            Grid.Row="3"
+            Margin="5,8" Padding="3"/>
+
+        <TextBox
+            Name="tb_id"
+            Grid.Column="1"
+            Grid.Row="1"
+            Margin="5,8" Padding="3"
+            Text="{Binding Path=CurrentModel.Id, Mode=TwoWay}"/>
+        <TextBox
+            Name="tb_name"
+            Grid.Column="1"
+            Grid.Row="2"
+            Margin="5,8" Padding="3"
+            Text="{Binding Path=CurrentModel.Name, Mode=TwoWay}"/>
+        <TextBox
+            Name="tb_age"
+            Grid.Column="1"
+            Grid.Row="3"
+            Margin="5,8" Padding="3"
+            Text="{Binding Path=CurrentModel.Age, Mode=TwoWay}"/>
+
+        <StackPanel
+            Orientation="Horizontal"
+            Grid.Row="4"
+            Grid.Column="1" Margin="5,8">
+            <Button
+                Name="btSearch"
+                Content="Search"
+                Margin="5,8" Padding="3"
+                Command="{Binding SearchCommand}"/>
+            <Button
+                Name="btAdd"
+                Content="Add"
+                Margin="5,8" Padding="3"
+                Command="{Binding SaveCommand}"/>
+            <Button
+                Name="btUpdate"
+                Content="Update"
+                Margin="5,8" Padding="3"
+                Command="{Binding UpdateCommand}"/>
+            <Button
+                Name="btDelete"
+                Content="Delete"
+                Margin="5,8" Padding="3"
+                Command="{Binding DeleteCommand}"/>
+        </StackPanel>
+        <TextBlock
+            Name="tb_message"
+            Grid.Row="5"
+            Grid.Column="1" Margin="5,8"
+            Text="{Binding Message}"/>
+        <DataGrid
+            Name="dgObj"
+            AutoGenerateColumns="false"
+            Grid.Row="6"
+            Grid.Column="1" Margin="5,8" Padding="3"
+            ItemsSource="{Binding ObjModelList, Mode=TwoWay}"
+            >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Width="auto" Binding="{Binding Id}" />
+                <DataGridTextColumn Header="Name" Width="auto" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Age" Width="auto" Binding="{Binding Age}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+    </Grid>
+</UserControl>
