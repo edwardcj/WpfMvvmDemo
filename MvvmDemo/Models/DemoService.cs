@@ -34,9 +34,11 @@ namespace MvvmDemo.Models
 
         void varifyObjAge(int newObjAge)
         {
+            /*
             const int ageThreshold = 18;
             if (newObjAge < ageThreshold)
                 throw new Exception("Age " + newObjAge + " is below " + ageThreshold);
+            */
         }
 
         void varifyObj(DemoModel newObj)
